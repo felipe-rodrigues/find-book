@@ -1,0 +1,46 @@
+<div [align]="'center'">
+  <fieldset>
+    <legend>Royal Library</legend>
+
+    <br><br>
+    <label>Search By : </label>
+    <select [(ngModel)]="type">
+      <option value="author">Author</option>
+      <option value="isbn">ISBN</option>
+      <option value="title">Title</option>
+    </select>
+    <br><br>
+    <label> Search Value : </label>
+    <input type="text" [(ngModel)]="value" />
+
+    <br>
+    <button (click)="search()">Search</button>
+  </fieldset>
+
+  <br>
+  <br>
+  <div style="width: 100; border: 1px;">
+    <table class="books">
+      <thead style="background-color: rgb(186, 179, 179);">
+        <tr style="border: 1px solid;">
+          <th>Book Title</th>
+          <th>Authors</th>
+          <th>Type</th>
+          <th>ISBN</th>
+          <th>Category</th>
+          <th>Available Copies</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let item of books" style="border: 1px solid;">
+            <td>{{ item.title }}</td>
+            <td>{{ item.firstName + ' ' + item.lastName }}</td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.isbn }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.copiesInUse + '/' + item.totalCopies}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
